@@ -1,0 +1,19 @@
+from django.urls import path
+from .views import (ContactFormView, DeleteTeacherView, HomeView,
+                    TeacherListView, TeacherUpdateView, ThankYouView,
+                    TeacherCreateView, TeacherDetailView)
+app_name = 'classroom'
+
+urlpatterns = [
+    path('', HomeView.as_view(), name='home'),
+    path('thank_you/', ThankYouView.as_view(), name='thank_you'),
+    path('contact/', ContactFormView.as_view(), name='contact'),
+    path('create_teacher/', TeacherCreateView.as_view(), name='create_teacher'),
+    path('teacher_list/', TeacherListView.as_view(), name='teacher_list'),
+    path('teacher_detail/<int:pk>',
+         TeacherDetailView.as_view(), name='teacher_list'),
+    path('update_teacher/<int:pk>',
+         TeacherUpdateView.as_view(), name='update_teacher'),
+    path('delete_teacher/<int:pk>',
+         DeleteTeacherView.as_view, name='delete_teacher'),
+]
